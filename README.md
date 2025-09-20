@@ -5,7 +5,7 @@ Name : T K W Arachchige
 
 Student Id : 2301671051
 
-Email Address : kawodya.wa@gmail.com /tharuuarachchige@gmail.com
+Email Address : kawodya.wa@gmail.com / tharuuarachchige@gmail.com
 
 Video Recording : [My Screen Record](https://drive.google.com/file/d/1oTkCm13uKNyxPS9Hwap4JfIBjvSJ6nPq/view?usp=share_link)
 <hr>
