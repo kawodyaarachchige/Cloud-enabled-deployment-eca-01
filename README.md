@@ -16,33 +16,29 @@ This project demonstrates a cloud-native microservices architecture deployed on 
 
 ## Architecture Diagram
 
-```
-┌─────────────────────────────────────────────────────────────────────────┐
-│                        Google Cloud Platform                            │
-│                                                                         │
-│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐         │
-│  │  Cloud Run      │  │  Cloud Run      │  │  Cloud Run      │         │
-│  │  Course Service │  │  Student Service│  │  Media Service  │         │
-│  │  (Spring Boot)  │  │  (Spring Boot)  │  │  (Spring Boot)  │         │
-│  └─────────────────┘  └─────────────────┘  └─────────────────┘         │
-│         │                     │                    │                   │
-│         ▼                     ▼                    ▼                   │
-│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐         │
-│  │  Cloud SQL      │  │  MongoDB Atlas  │  │  Cloud Storage  │         │
-│  │  (MySQL 8.0)    │  │  (Free Tier)    │  │  (Regional)     │         │
-│  └─────────────────┘  └─────────────────┘  └─────────────────┘         │
-│                                                                         │
-└─────────────────────────────────────────────────────────────────────────┘
-                               │
-                               ▼
-                    ┌─────────────────────┐
-                    │      Frontend       │
-                    │  (React + Vite)     │
-                    │  Cloud Hosted/Netlify│
-                    └─────────────────────┘
+``` mermaid 
+flowchart TD
+    subgraph GCP["Google Cloud Platform"]
+        subgraph Services
+            CourseService["Cloud Run<br/>(Spring Boot)<br/>Course Service"]
+            StudentService["Cloud Run<br/>(Spring Boot)<br/>Student Service"]
+            MediaService["Cloud Run<br/>(Spring Boot)<br/>Media Service"]
+        end
 
+        subgraph Databases
+            CloudSQL["Cloud SQL<br/>(MySQL 8.0)"]
+            MongoDB["MongoDB Atlas<br/>(Free Tier)"]
+            CloudStorage["Cloud Storage<br/>(Regional)"]
+        end
 
+        CourseService --> CloudSQL
+        StudentService --> MongoDB
+        MediaService --> CloudStorage
+    end
+
+    GCP --> Frontend["Frontend<br/>(React + Vite)<br/>Cloud Hosted or Netlify"]
 ```
+
 
 
 ## Service Specifications
